@@ -9,6 +9,7 @@ import About from "../Pages/about/About";
 import AddTags from "../Pages/shared/AddTags/AddTags";
 import AnnouncementForm from "../Pages/Home/Announcement/AnnouncementForm";
 import CreatePostForm from "../Pages/Home/CreatePostForm/CreatePostForm";
+import PostDetails from "../Pages/Home/PostDetails/PostDetails";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ export const router = createBrowserRouter([
             <AnnouncementForm></AnnouncementForm>,
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/Details/:id",
+        // loader: (params) => fetch(`http://localhost:3000/posts/${params}`),
+        Component: PostDetails,
       },
       {
         path: "createPostForm",

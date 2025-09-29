@@ -6,12 +6,44 @@ import {
   FaComment,
   FaShareAlt,
 } from "react-icons/fa";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
+import { MdDelete } from "react-icons/md";
+
 import { FacebookShareButton } from "react-share";
+import Swal from "sweetalert2";
 
 const PostCard = ({ post }) => {
-  const { authorAvatar, authorName, postImage, publishDate, tags, title } =
+  const { _id, authorAvatar, authorName, postImage, publishDate, tags, title } =
     post;
+
+  const handleDelete = (_id) => {
+    console.log(_id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      console.log(result.isConfirmed);
+      fetch(`http://localhost:3000/posts/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("after", data);
+          if (data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your post has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+    });
+  };
 
   // ✅ State for likes/dislikes
   const [votes, setVotes] = useState({ up: 0, down: 0 });
@@ -25,7 +57,7 @@ const PostCard = ({ post }) => {
   const shareUrl = window.location.href;
 
   return (
-    <div className="">
+    <div className=" ">
       <div className="max-w-md mx-auto bg-white border rounded-lg shadow-md p-4 mb-6">
         {/* Author + Date */}
         <div className="flex items-center mb-3">
@@ -55,11 +87,30 @@ const PostCard = ({ post }) => {
         <h2 className="text-lg font-bold mb-2">{title}</h2>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-3 ">
-          <span className="px-2 py-1 text-xs bg-blue-100 text-blue-600 rounded">
+        <div className="flex flex-wrap gap-2 mb-3 justify-between">
+          <span className="px-2 py-1 text-bold text-blue-500 rounded">
             {tags}
           </span>
-          <BsThreeDotsVertical />
+
+          <div className="dropdown dropdown-bottom">
+            <div tabIndex={0} role="button" className="btn m-1">
+              <BsThreeDotsVertical />
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu  rounded-box z-1 w-20  p-2 shadow-sm"
+            >
+              <li>
+                {" "}
+                <button
+                  onClick={() => handleDelete(_id)}
+                  className="btn bg-pink-800 text-white"
+                >
+                  DELETE
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
 
         {/* Actions */}
@@ -84,10 +135,11 @@ const PostCard = ({ post }) => {
           </div>
 
           {/* Details Button */}
-          <button className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 text-sm">
-            Details
-          </button>
-
+          <Link to={`/Details/${_id}`}>
+            <button className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 text-sm">
+              Details
+            </button>
+          </Link>
           {/* Share */}
           <div className="flex gap-2">
             <FacebookShareButton url={shareUrl} quote={title}>

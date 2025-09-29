@@ -10,7 +10,7 @@ import Posts from "./PostCard/Posts";
 const Home = () => {
   const tagData = useLoaderData();
   const [phones, setPhones] = useState(tagData);
-  console.log(tagData);
+
   const handleSearch = (e, text) => {
     e.preventDefault();
     if (text === "") return setPhones(tagData);

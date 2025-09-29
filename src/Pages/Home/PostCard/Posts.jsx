@@ -5,7 +5,6 @@ import { NavLink } from "react-router";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
-  console.log(posts);
 
   useEffect(() => {
     fetch("http://localhost:3000/posts")
@@ -19,8 +18,8 @@ const Posts = () => {
   }, []);
 
   return (
-    <div className="">
-      <div className=" flex justify-between">
+    <div className="shadow-2xl">
+      <div className=" flex justify-between mt-7">
         <h1 className="text-3xl text-teal-600 font-bold"> Share Post</h1>
 
         <NavLink to={"/createPostForm"}>
