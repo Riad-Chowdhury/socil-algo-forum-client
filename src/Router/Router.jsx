@@ -43,7 +43,8 @@ export const router = createBrowserRouter([
       },
       {
         path: "/Details/:id",
-        // loader: (params) => fetch(`http://localhost:3000/posts/${params}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/posts/${params.id}`),
         Component: PostDetails,
       },
       {
