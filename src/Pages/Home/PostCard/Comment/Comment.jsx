@@ -9,7 +9,7 @@ const Comment = ({ postId }) => {
   // fetch comments for this post
   useEffect(() => {
     if (open) {
-      fetch(`http://localhost:3000/comments/${postId}`)
+      fetch(`socil-algo-forum-server.vercel.app/comments/${postId}`)
         .then((res) => res.json())
         .then((data) => setComments(data))
         .catch((err) => console.error(err));
@@ -28,7 +28,7 @@ const Comment = ({ postId }) => {
       date: new Date(),
     };
 
-    fetch("http://localhost:3000/comments", {
+    fetch("https://socil-algo-forum-server.vercel.app/comments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

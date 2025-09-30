@@ -7,7 +7,7 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/posts")
+    fetch("https://socil-algo-forum-server.vercel.app/posts")
       .then((res) => res.json())
       .then((data) => {
         setPosts(data);

@@ -26,8 +26,6 @@ const Navbar = () => {
   const lick = (
     <>
       <NavLink to={"/"}>home</NavLink>
-
-      <NavLink to={"/about"}>abbb</NavLink>
     </>
   );
   return (
@@ -79,7 +77,13 @@ const Navbar = () => {
               tabIndex={0}
               className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
             >
-              <li></li>
+              <li>
+                {user && (
+                  <>
+                    <NavLink to={"/dashboard"}>Dashboard </NavLink>
+                  </>
+                )}
+              </li>
               <li>
                 {user ? (
                   <button onClick={handleLogOut} className="btn">

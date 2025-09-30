@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^4.0.2",
+    "@stripe/stripe-js": "^7.9.0",
     "@tailwindcss/vite": "^4.1.13",
     "aos": "^2.3.4",
     "axios": "^1.12.2",
@@ -23,6 +25,7 @@
     "react-lottie": "^1.2.10",
     "react-responsive-carousel": "^3.2.23",
     "react-router": "^7.9.1",
+    "react-router-dom": "^7.9.3",
     "react-share": "^5.2.2",
     "react-slick": "^0.31.0",
     "slick-carousel": "^1.8.1",

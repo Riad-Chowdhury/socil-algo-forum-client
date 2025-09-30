@@ -1,7 +1,7 @@
 import React from "react";
 
-const About = () => {
+const Membership = () => {
   return <div className="text-7xl">about</div>;
 };
 
-export default About;
+export default Membership;

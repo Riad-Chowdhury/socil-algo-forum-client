@@ -10,7 +10,7 @@ const AddTags = () => {
     const tags = Object.fromEntries(formData.entries());
 
     axios
-      .post("http://localhost:3000/tags", tags)
+      .post("https://socil-algo-forum-server.vercel.app/tags", tags)
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {

@@ -20,7 +20,7 @@ const TagFilter = ({ tagData }) => {
         data-aos="fade-down-right "
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-3"
       >
-        {tagData.map((tags) => (
+        {tagData?.map((tags) => (
           <TagCard key={tags.id} tags={tags}></TagCard>
         ))}
       </div>

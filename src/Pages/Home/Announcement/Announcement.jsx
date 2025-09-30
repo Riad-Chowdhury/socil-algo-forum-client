@@ -8,7 +8,7 @@ const Announcement = () => {
 
   // Fetch announcement count
   useEffect(() => {
-    fetch("http://localhost:3000/announcements/count")
+    fetch("https://socil-algo-forum-server.vercel.app/announcements/count")
       .then((res) => res.json())
       .then((data) => setCount(data.count))
       .catch((err) => console.error(err));
@@ -17,7 +17,7 @@ const Announcement = () => {
   // Fetch announcement list
   useEffect(() => {
     if (open && announcements.length === 0) {
-      fetch("http://localhost:3000/announcements")
+      fetch("https://socil-algo-forum-server.vercel.app/announcements")
         .then((res) => res.json())
         .then((data) => setAnnouncements(data))
         .catch((err) => console.error(err));

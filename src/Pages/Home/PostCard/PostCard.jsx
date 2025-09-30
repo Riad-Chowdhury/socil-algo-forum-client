@@ -30,7 +30,7 @@ const PostCard = ({ post }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       console.log(result.isConfirmed);
-      fetch(`http://localhost:3000/posts/${_id}`, {
+      fetch(`socil-algo-forum-server.vercel.app/posts/${_id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

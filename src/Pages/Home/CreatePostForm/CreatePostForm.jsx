@@ -28,18 +28,20 @@ export default function CreatePostForm() {
     const posts = Object.fromEntries(formData.entries());
     console.log(posts);
 
-    axios.post("http://localhost:3000/posts", posts).then((res) => {
-      console.log(res.data);
-      if (res.data.insertedId) {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Your work has been saved",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
+    axios
+      .post("https://socil-algo-forum-server.vercel.app/posts", posts)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
 
     // Reset form
     setFormData({

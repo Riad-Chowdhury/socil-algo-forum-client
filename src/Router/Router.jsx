@@ -5,17 +5,25 @@ import AuthLayout from "../RootLayout/AuthLayout";
 import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
 import PrivateRoutes from "../context/AuthContrect/PrivateRoutes";
-import About from "../Pages/about/About";
+// import About from "../Pages/about/About";
 import AddTags from "../Pages/shared/AddTags/AddTags";
 import AnnouncementForm from "../Pages/Home/Announcement/AnnouncementForm";
 import CreatePostForm from "../Pages/Home/CreatePostForm/CreatePostForm";
 import PostDetails from "../Pages/Home/PostDetails/PostDetails";
+// import Dashboard from "../RootLayout/Dashboard";
+import DashboardLayout from "../RootLayout/DashboardLayout";
+// import MyProfile from "../Pages/BordDashboard/MyProfile/MyProfile";
+import Error from "../Pages/Erroe/Error";
+import Payment from "../Pages/Payment/Payment";
+// import AddPost from "../Pages/BordDashboard/AddPost";
+// import AddPost from "../Pages/BordDashboard/AddPost/AddPost";
+// import MyProfile from "../Pages/BordDashboard/MyProfile/MyProfile";
 // import CommentInput from "../Pages/Home/PostCard/PostComment/CommentInput";
 
 export const router = createBrowserRouter([
   {
     path: "/*",
-    element: <h3 className="text-2xl">Error</h3>,
+    Component: Error,
   },
   {
     path: "/",
@@ -23,7 +31,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("http://localhost:3000/tags"),
+        loader: () => fetch("https://socil-algo-forum-server.vercel.app/tags"),
         Component: Home,
       },
       {
@@ -46,14 +54,23 @@ export const router = createBrowserRouter([
       {
         path: "/Details/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/posts/${params.id}`),
+          fetch(`socil-algo-forum-server.vercel.app/posts/${params.id}`),
         Component: PostDetails,
       },
+
       {
         path: "createPostForm",
         element: (
           <PrivateRoutes>
             <CreatePostForm></CreatePostForm>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "membership",
+        element: (
+          <PrivateRoutes>
+            <Payment></Payment>
           </PrivateRoutes>
         ),
       },
@@ -72,6 +89,21 @@ export const router = createBrowserRouter([
         path: "register",
         Component: Register,
       },
+    ],
+  },
+
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoutes>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoutes>
+    ),
+    children: [
+      // {
+      // path: "addPost",
+      // Component: AddPost,
+      // },
     ],
   },
 ]);

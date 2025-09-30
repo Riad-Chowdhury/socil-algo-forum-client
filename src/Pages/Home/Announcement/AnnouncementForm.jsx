@@ -16,7 +16,10 @@ const AnnouncementForm = () => {
     console.log(announcement);
 
     axios
-      .post("http://localhost:3000/announcement", announcement)
+      .post(
+        "https://socil-algo-forum-server.vercel.app/announcement",
+        announcement
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.insertedId) {
