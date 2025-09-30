@@ -11,6 +11,8 @@ import { MdDelete } from "react-icons/md";
 
 import { FacebookShareButton } from "react-share";
 import Swal from "sweetalert2";
+import Comment from "./Comment/Comment";
+// import PostComment from "./PostComment/PostComment";
 
 const PostCard = ({ post }) => {
   const { _id, authorAvatar, authorName, postImage, publishDate, tags, title } =
@@ -129,7 +131,8 @@ const PostCard = ({ post }) => {
               <FaThumbsDown /> {votes.down}
             </button>
             <button className="flex items-center gap-1 text-gray-600">
-              <FaComment /> 0
+              {/* <PostComment></PostComment> */}
+              <Comment postId={_id}></Comment>
             </button>
             <span className="text-gray-700">Total: {totalVotes}</span>
           </div>

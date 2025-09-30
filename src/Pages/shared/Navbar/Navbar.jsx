@@ -73,7 +73,7 @@ const Navbar = () => {
           <Announcement></Announcement>
           <div className="dropdown bg-amber-200 dropdown-bottom">
             <div tabIndex={0} role="button" className="btn m-1">
-              Click ⬇️
+              Click
             </div>
             <ul
               tabIndex={0}

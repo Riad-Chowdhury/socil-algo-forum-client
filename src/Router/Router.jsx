@@ -10,6 +10,7 @@ import AddTags from "../Pages/shared/AddTags/AddTags";
 import AnnouncementForm from "../Pages/Home/Announcement/AnnouncementForm";
 import CreatePostForm from "../Pages/Home/CreatePostForm/CreatePostForm";
 import PostDetails from "../Pages/Home/PostDetails/PostDetails";
+// import CommentInput from "../Pages/Home/PostCard/PostComment/CommentInput";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ export const router = createBrowserRouter([
           </PrivateRoutes>
         ),
       },
+
       {
         path: "/Details/:id",
         loader: ({ params }) =>
